@@ -16,7 +16,7 @@ access_grant: 1_explore_ua {
 }
 
 explore: billion_orders {
-  required_access_grants: [1_explore_ua]
+  #required_access_grants: [1_explore_ua]
   join: orders {
     type: left_outer
     sql_on: ${billion_orders.order_id} = ${orders.id} ;;
@@ -278,7 +278,9 @@ explore: test_space_in_column_name {}
 
 explore: thor {}
 
-explore: users {}
+explore: users {
+  required_access_grants: [1_explore_ua]
+}
 
 explore: user_data {
   join: users {
