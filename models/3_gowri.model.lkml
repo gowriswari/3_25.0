@@ -12,7 +12,7 @@ persist_with: 3_gowri_default_datagroup
 
 access_grant: 1_explore_ua {
   user_attribute: users_2
-  allowed_values: [ "users" ]
+  allowed_values: [ "users", "orders" ]
 }
 
 explore: billion_orders {
@@ -135,6 +135,7 @@ explore: korean_string {}
 explore: map_layer {}
 
 explore: orders {
+  required_access_grants: [1_explore_ua]
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
