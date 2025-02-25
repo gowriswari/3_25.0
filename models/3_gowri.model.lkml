@@ -10,7 +10,13 @@ datagroup: 3_gowri_default_datagroup {
 
 persist_with: 3_gowri_default_datagroup
 
+access_grant: 1_explore_ua {
+  user_attribute: users_2
+  allowed_values: [ "users" ]
+}
+
 explore: billion_orders {
+  required_access_grants: [1_explore_ua]
   join: orders {
     type: left_outer
     sql_on: ${billion_orders.order_id} = ${orders.id} ;;
