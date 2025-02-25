@@ -144,6 +144,7 @@ explore: orders {
 }
 
 explore: order_items {
+  required_access_grants: [1_explore_ua]
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
