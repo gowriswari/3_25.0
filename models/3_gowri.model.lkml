@@ -10,7 +10,13 @@ datagroup: 3_gowri_default_datagroup {
 
 persist_with: 3_gowri_default_datagroup
 
+access_grant: 1_explore_ua {
+  user_attribute: users_2
+  allowed_values: [ "users", "orders", "persons" ]
+}
+
 explore: billion_orders {
+  #required_access_grants: [1_explore_ua]
   join: orders {
     type: left_outer
     sql_on: ${billion_orders.order_id} = ${orders.id} ;;
@@ -130,6 +136,7 @@ explore: map_layer {}
 
 explore: orders {
   join: users {
+    required_access_grants: [1_explore_ua]
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
@@ -137,9 +144,13 @@ explore: orders {
 }
 
 explore: order_items {
+<<<<<<< HEAD
   conditionally_filter: {
     filters: [order_items.returned_year: "2016"]
   }
+=======
+ # required_access_grants: [1_explore_ua]
+>>>>>>> d887e22a294b4d8cba8934a1086684978c54caad
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
@@ -195,9 +206,12 @@ explore: order_status_vijaya {}
 
 explore: pegdates {}
 
-explore: person {}
+explore: person {
+}
 
-explore: persons {}
+explore: persons {
+  required_access_grants: [1_explore_ua]
+}
 
 explore: persons2 {}
 
@@ -275,7 +289,9 @@ explore: test_space_in_column_name {}
 
 explore: thor {}
 
-explore: users {}
+explore: users {
+  required_access_grants: [1_explore_ua]
+}
 
 explore: user_data {
   join: users {
