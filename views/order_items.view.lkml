@@ -34,6 +34,16 @@ view: order_items {
     type: number
     sql: ${TABLE}.sale_price ;;
   }
+
+  dimension: case_when_test {
+    case: {
+      when: {
+        sql: ${orders.status} = " COMPLETED" ;;
+        label: "Test for yes"
+      }
+      else: "Test for no"
+    }
+  }
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]

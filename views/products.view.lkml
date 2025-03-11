@@ -17,8 +17,16 @@ view: products {
   }
   dimension: department {
     type: string
+    html: {% if orders.status._in_query %}
+      <p style="color: black; background-color: lightgreen;">{{ value }}</p>
+    {% elsif products.brand._in_query %}
+      <p style="color: black; background-color: orange;">{{ value }}</p>
+    {% else %}
+      <p style="color: white; background-color: red;">{{ value }}</p>
+    {% endif %}
     sql: ${TABLE}.department ;;
   }
+
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;

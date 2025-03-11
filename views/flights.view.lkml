@@ -30,6 +30,7 @@ view: flights {
   dimension: destination {
     type: string
     sql: ${TABLE}.destination ;;
+    map_layer_name: us_states
   }
   dimension: distance {
     type: number
@@ -54,6 +55,7 @@ view: flights {
   dimension: origin {
     type: string
     sql: ${TABLE}.origin ;;
+    map_layer_name: us_states
   }
   dimension: tail_num {
     type: string
