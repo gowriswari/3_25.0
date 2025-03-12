@@ -137,7 +137,7 @@ explore: map_layer {}
 
 explore: orders {
   join: users {
-    required_access_grants: [1_explore_ua]
+    # required_access_grants: [1_explore_ua]
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
