@@ -12,6 +12,7 @@ view: orders {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
