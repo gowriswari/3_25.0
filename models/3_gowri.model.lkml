@@ -285,7 +285,7 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
-  required_access_grants: [1_explore_ua]
+  # required_access_grants: [1_explore_ua]
 }
 
 explore: user_data {
