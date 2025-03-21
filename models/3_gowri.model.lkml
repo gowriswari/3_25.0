@@ -2,6 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
+include: "/expand_all_rows.dashboard.lookml"
 
 datagroup: 3_gowri_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -136,7 +137,7 @@ explore: map_layer {}
 
 explore: orders {
   join: users {
-    required_access_grants: [1_explore_ua]
+    # required_access_grants: [1_explore_ua]
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
@@ -294,7 +295,7 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
-  required_access_grants: [1_explore_ua]
+  # required_access_grants: [1_explore_ua]
 }
 
 explore: user_data {

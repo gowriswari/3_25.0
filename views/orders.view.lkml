@@ -13,9 +13,14 @@ view: orders {
     sql: ${TABLE}.created_at ;;
     allow_fill: yes
   }
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+    link: {
+      label: "expand rows"
+      url: "https://gcpl250.cloud.looker.com/dashboards/3_gowri::expand_all_rows?ID=&Status={{value}}"
+    }
   }
   dimension: user_id {
     type: number
