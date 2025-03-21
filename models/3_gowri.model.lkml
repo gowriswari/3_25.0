@@ -195,6 +195,16 @@ explore: order_items_vijaya {
     relationship: many_to_one
   }
 }
+# Place in `3_gowri` model
+explore: +order_items {
+    query: test {
+      dimensions: [orders.created_month]
+      measures: [orders.count]
+      filters: [orders.created_month: "50 months"]
+    }
+  }
+
+
 
 explore: order_status_vijaya {}
 
