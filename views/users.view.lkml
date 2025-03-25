@@ -15,6 +15,12 @@ view: users {
     type: string
     sql: ${TABLE}.city ;;
   }
+
+  dimension: test{
+    type: string
+    sql: "L'Oréal Paris" ;;
+  }
+
   dimension: country {
     type: string
     map_layer_name: countries
@@ -57,15 +63,15 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
   }
 
 }

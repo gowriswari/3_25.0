@@ -2,7 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
-include: "/views/derive_table_1.view.lkml"
+
 
 datagroup: 3_gowri_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -137,7 +137,7 @@ explore: map_layer {}
 
 explore: orders {
   join: users {
-    required_access_grants: [1_explore_ua]
+    # required_access_grants: [1_explore_ua]
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
@@ -202,6 +202,16 @@ explore: order_items_vijaya {
     relationship: many_to_one
   }
 }
+# Place in `3_gowri` model
+explore: +order_items {
+    query: test {
+      dimensions: [orders.created_month]
+      measures: [orders.count]
+      filters: [orders.created_month: "50 months"]
+    }
+  }
+
+
 
 explore: order_status_vijaya {}
 
@@ -291,7 +301,7 @@ explore: test_space_in_column_name {}
 explore: thor {}
 
 explore: users {
-  required_access_grants: [1_explore_ua]
+  # required_access_grants: [1_explore_ua]
 }
 
 explore: user_data {
