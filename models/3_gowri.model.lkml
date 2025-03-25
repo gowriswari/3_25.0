@@ -2,6 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
+include: "/views/derive_table_1.view.lkml"
 
 datagroup: 3_gowri_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -145,6 +146,12 @@ explore: orders {
 
 explore: order_items {
  # required_access_grants: [1_explore_ua]
+
+access_filter: {
+  field: orders.status
+  user_attribute: u1
+}
+
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
