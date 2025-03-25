@@ -146,11 +146,11 @@ explore: orders {
 
 explore: order_items {
  # required_access_grants: [1_explore_ua]
-
-access_filter: {
-  field: orders.status
-  user_attribute: u1
-}
+  view_name: order_items
+   access_filter: {
+    field: orders.status
+    user_attribute: u1
+  }
 
   join: orders {
     type: left_outer
@@ -175,6 +175,7 @@ access_filter: {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+
 }
 
 explore: order_items_vijaya {
